@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/url"
 
 	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-go-expert-pos/internal/dto"
 	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-go-expert-pos/internal/entity"
@@ -30,7 +31,12 @@ func (httpclient httpclient) Get(ctx context.Context, cityName string) (*dto.Wea
 	weatherApiKey := viper.GetString("WEATHER_API_KEY")
 	var weatherOutput dto.WeatherOutput
 
-	url := fmt.Sprintf("%s?key=%s&q=%s&aqi=no", BASE_URL, weatherApiKey, cityName)
+	params := url.Values{}
+	params.Add("key", weatherApiKey)
+	params.Add("q", cityName)
+	params.Add("aqi", "no")
+
+	url := fmt.Sprintf("%s?%s", BASE_URL, params.Encode())
 
 	request, err := http.NewRequestWithContext(ctx, http.MethodGet, url, bytes.NewReader(nil))
 
