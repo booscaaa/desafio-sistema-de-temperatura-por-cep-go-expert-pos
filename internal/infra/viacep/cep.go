@@ -26,7 +26,7 @@ func NewCepHTTPClient(client *http.Client) entity.CepHTTPClient {
 	}
 }
 
-func (httpclient httpclient) Get(ctx context.Context, cep string) (*dto.CepOutput, error) {
+func (httpclient httpclient) Get(ctx context.Context, cep string) (*entity.Cep, error) {
 	var cepOutput dto.CepOutput
 	url := fmt.Sprintf("%s/ws/%s/json/", BASE_URL, cep)
 
@@ -59,7 +59,10 @@ func (httpclient httpclient) Get(ctx context.Context, cep string) (*dto.CepOutpu
 			return nil, errorhandle.ErrNotFound
 		}
 
-		return &cepOutput, nil
+		return &entity.Cep{
+			Cep:      cepOutput.Cep,
+			CityName: cepOutput.Localidade,
+		}, nil
 	}
 
 	return nil, errorhandle.ErrUnprocessableEntity
