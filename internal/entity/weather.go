@@ -3,8 +3,6 @@ package entity
 import (
 	"context"
 	"net/http"
-
-	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-go-expert-pos/internal/dto"
 )
 
 type Weather struct {
@@ -22,7 +20,7 @@ func (weather *Weather) CalculateKelvin() {
 }
 
 type WeatherHTTPClient interface {
-	Get(context.Context, string) (*dto.WeatherOutput, error)
+	Get(context.Context, string) (*Weather, error)
 }
 
 type WeatherUseCase interface {

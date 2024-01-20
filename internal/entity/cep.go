@@ -2,10 +2,13 @@ package entity
 
 import (
 	"context"
-
-	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-go-expert-pos/internal/dto"
 )
 
+type Cep struct {
+	Cep      string `json:"cep"`
+	CityName string `json:"cityName"`
+}
+
 type CepHTTPClient interface {
-	Get(context.Context, string) (*dto.CepOutput, error)
+	Get(context.Context, string) (*Cep, error)
 }
