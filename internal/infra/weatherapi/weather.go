@@ -27,8 +27,8 @@ func NewWeatherHTTPClient(client *http.Client) entity.WeatherHTTPClient {
 	}
 }
 
-func (httpclient httpclient) Get(ctx context.Context, cityName string) (*dto.WeatherOutput, error) {
-	weatherApiKey := viper.GetString("WEATHER_API_KEY")
+func (httpclient httpclient) Get(ctx context.Context, cityName string) (*entity.Weather, error) {
+	weatherApiKey := viper.GetString("weather_api_key")
 	var weatherOutput dto.WeatherOutput
 
 	params := url.Values{}
@@ -60,5 +60,7 @@ func (httpclient httpclient) Get(ctx context.Context, cityName string) (*dto.Wea
 		return nil, err
 	}
 
-	return &weatherOutput, nil
+	return &entity.Weather{
+		TempC: weatherOutput.Current.TempC,
+	}, nil
 }
