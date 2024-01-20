@@ -19,6 +19,17 @@ func NewWebController(usecase entity.WeatherUseCase) entity.WeatherController {
 	}
 }
 
+// Get goDoc
+// @Summary Get temperature
+// @Description Get temperature in celcius, kelvin and fahrenheit
+// @Tags cep
+// @Accept  json
+// @Produce  json
+// @Param cep path string true "cep"
+// @Success 200 {object} entity.Weather
+// @Failure 404 {object} errorhandle.Response
+// @Failure 422 {object} errorhandle.Response
+// @Router /cep/{cep} [get]
 func (controller controller) Get(response http.ResponseWriter, request *http.Request) {
 	cep := chi.URLParam(request, "cep")
 	weather, err := controller.usecase.Get(request.Context(), cep)
