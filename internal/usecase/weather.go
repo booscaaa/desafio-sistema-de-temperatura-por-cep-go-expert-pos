@@ -28,18 +28,14 @@ func (usecase usecase) Get(ctx context.Context, cep string) (*entity.Weather, er
 		return nil, err
 	}
 
-	weatherResponse, err := usecase.weatherHTTPClient.Get(ctx, cepResponse.Localidade)
+	weatherResponse, err := usecase.weatherHTTPClient.Get(ctx, cepResponse.CityName)
 
 	if err != nil {
 		return nil, err
 	}
 
-	weather := entity.Weather{
-		TempC: weatherResponse.Current.TempC,
-	}
+	weatherResponse.CalculateFarenheit()
+	weatherResponse.CalculateKelvin()
 
-	weather.CalculateFarenheit()
-	weather.CalculateKelvin()
-
-	return &weather, nil
+	return weatherResponse, nil
 }
