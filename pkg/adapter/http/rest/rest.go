@@ -6,8 +6,9 @@ import (
 
 	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-go-expert-pos/internal/di"
 	"github.com/go-chi/chi"
+	"github.com/go-playground/validator/v10"
 
-	"github.com/swaggo/http-swagger/v2"
+	httpSwagger "github.com/swaggo/http-swagger/v2"
 
 	docs "github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-go-expert-pos/pkg/adapter/http/rest/docs"
 )
@@ -22,9 +23,9 @@ import (
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 // @BasePath /
 
-func Initialize() {
+func Initialize(validator *validator.Validate) {
 	docs.SwaggerInfo.BasePath = "/"
-	webController := di.ConfigWebController()
+	webController := di.ConfigWebController(validator)
 
 	r := chi.NewRouter()
 

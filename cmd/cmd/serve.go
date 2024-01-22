@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-go-expert-pos/pkg/adapter/http/rest"
+	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-go-expert-pos/pkg/adapter/validator"
 	"github.com/spf13/cobra"
 )
 
@@ -14,7 +15,8 @@ var serveCmd = &cobra.Command{
 	Short: "",
 	Long:  "",
 	Run: func(cmd *cobra.Command, args []string) {
-		rest.Initialize()
+		validator := validator.Initialize()
+		rest.Initialize(validator)
 	},
 }
 
