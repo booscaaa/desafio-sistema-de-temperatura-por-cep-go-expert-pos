@@ -8,27 +8,27 @@ type WeatherOutput struct {
 type Current struct {
 	LastUpdatedEpoch int64     `json:"last_updated_epoch"`
 	LastUpdated      string    `json:"last_updated"`
-	TempC            float64   `json:"temp_c"`
-	TempF            float64   `json:"temp_f"`
+	TempC            float32   `json:"temp_c"`
+	TempF            float32   `json:"temp_f"`
 	IsDay            int64     `json:"is_day"`
 	Condition        Condition `json:"condition"`
-	WindMph          float64   `json:"wind_mph"`
-	WindKph          float64   `json:"wind_kph"`
+	WindMph          float32   `json:"wind_mph"`
+	WindKph          float32   `json:"wind_kph"`
 	WindDegree       int64     `json:"wind_degree"`
 	WindDir          string    `json:"wind_dir"`
-	PressureMB       float64   `json:"pressure_mb"`
-	PressureIn       float64   `json:"pressure_in"`
-	PrecipMm         float64   `json:"precip_mm"`
-	PrecipIn         float64   `json:"precip_in"`
+	PressureMB       float32   `json:"pressure_mb"`
+	PressureIn       float32   `json:"pressure_in"`
+	PrecipMm         float32   `json:"precip_mm"`
+	PrecipIn         float32   `json:"precip_in"`
 	Humidity         int64     `json:"humidity"`
 	Cloud            int64     `json:"cloud"`
-	FeelslikeC       float64   `json:"feelslike_c"`
-	FeelslikeF       float64   `json:"feelslike_f"`
-	VisKM            float64   `json:"vis_km"`
-	VisMiles         float64   `json:"vis_miles"`
-	Uv               float64   `json:"uv"`
-	GustMph          float64   `json:"gust_mph"`
-	GustKph          float64   `json:"gust_kph"`
+	FeelslikeC       float32   `json:"feelslike_c"`
+	FeelslikeF       float32   `json:"feelslike_f"`
+	VisKM            float32   `json:"vis_km"`
+	VisMiles         float32   `json:"vis_miles"`
+	Uv               float32   `json:"uv"`
+	GustMph          float32   `json:"gust_mph"`
+	GustKph          float32   `json:"gust_kph"`
 }
 
 type Condition struct {
@@ -41,8 +41,8 @@ type Location struct {
 	Name           string  `json:"name"`
 	Region         string  `json:"region"`
 	Country        string  `json:"country"`
-	Lat            float64 `json:"lat"`
-	Lon            float64 `json:"lon"`
+	Lat            float32 `json:"lat"`
+	Lon            float32 `json:"lon"`
 	TzID           string  `json:"tz_id"`
 	LocaltimeEpoch int64   `json:"localtime_epoch"`
 	Localtime      string  `json:"localtime"`
