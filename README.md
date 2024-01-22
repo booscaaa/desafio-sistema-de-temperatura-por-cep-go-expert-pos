@@ -1,4 +1,4 @@
-# README para o Desafio do Sistema de Clima com CEP
+# Desafio do Sistema de Clima com CEP
 ## Objetivo
 Este projeto em Go tem como objetivo desenvolver um sistema que, ao receber um CEP válido, identifica a cidade correspondente e retorna o clima atual em diferentes unidades de temperatura: Celsius, Fahrenheit e Kelvin. O sistema é hospedado no Google Cloud Run.
 
