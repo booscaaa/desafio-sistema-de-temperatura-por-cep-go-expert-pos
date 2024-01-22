@@ -26,6 +26,15 @@ Este projeto em Go tem como objetivo desenvolver um sistema que, ao receber um C
   ```go
   cd desafio-sistema-de-temperatura-por-cep-go-expert-pos.git
   ```
+- Configure a variavel com a chave da api do seu WeatherAPI:
+  ```
+  cp config.example.json config.json
+  nano config.json
+
+  {
+    "weather_api_key": "<API_KEY>"
+  }
+  ```
 - Execute:
   ```go
   docker compose up --build -d
